@@ -3,8 +3,8 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http, {
   cors: {
-    origin: '*',
-  }
+    origin: "*",
+  },
 });
 
 const users = [];
@@ -24,8 +24,13 @@ io.on("connection", (socket) => {
       name: users[socket.id],
     });
   });
+
+  socket.on("disconnect", () => {
+    socket.broadcast.emit("left", users[socket.id]);
+    delete users[socket.id];
+  });
 });
 
 http.listen(8000, () => {
-  console.log(`Server is listening on port 8000`);
+  console.log("Server is listening on port 8000");
 });
