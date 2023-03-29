@@ -1,0 +1,13 @@
+1. socket.on:
+------------
+
+-> You can use socket.on to handle events related to a specific client, such as when the client sends a 
+   message or disconnects from the server.
+
+
+2. io.on:
+---------
+
+-> You can use io.on to handle events related to the server itself, such as when a new client connects to 
+   the server or when the server is shutting down.
+
