@@ -35,6 +35,7 @@ socket.on("received", (data) => {
   append(`${data.name}: ${data.message}`, "left");
 });
 
+// if user leave the chat then it will appear on the left side
 socket.on("left", (name) => {
   append(`${name}: left the chat`, "left");
 });

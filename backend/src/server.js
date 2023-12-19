@@ -1,13 +1,16 @@
+// Node server which will handle socket.io connections.
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
+// socket.io server is instance of http 
+// socket.io server listen incoming events
 const io = require("socket.io")(http, {
   cors: {
     origin: "*",
   },
 });
 
-const users = [];
+const users = {};
 
 io.on("connection", (socket) => {
   console.log("a user connected");
@@ -15,7 +18,8 @@ io.on("connection", (socket) => {
   socket.on("new-user-joined", (name) => {
     console.log("New User : ", name);
     users[socket.id] = name;
-    socket.broadcast.emit("user-joined", name);
+    // socket.broadcast.emit is used to broadcast a message to all connected clients except the sender of the original message.
+    socket.broadcast.emit("user-joined", name); 
   });
 
   socket.on("send", (message) => {

@@ -1,0 +1,14 @@
+This is chat application
+
+features: 
+
+0. You can chat with single people or you can chat in a group.
+1. Multiple peoples can connected and can chat with each others.
+2. When a new user is connected, all users get notified with a name of user and a message ringtone.
+3. When a new user is disconnected, all users get notified with a name of user and a message ringtone.
+4. each message have a message ringtone.
+
+
+So basically we use here socket.io library.
+
+
